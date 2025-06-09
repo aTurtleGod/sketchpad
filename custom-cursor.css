@@ -1,0 +1,33 @@
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    background-image: url('mouse cruiser.png');
+    background-size: contain;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+}
+#fullscreen-button {
+    background: rgba(0,0,0,0.05);
+    border: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fullscreen-button svg:nth-child(2) {
+    display: none;
+}
+
+[fullscreen] #fullscreen-button svg:nth-child(1) {
+    display: none;
+}
+
+[fullscreen] #fullscreen-button svg:nth-child(2) {
+    display: inline-block;
+}

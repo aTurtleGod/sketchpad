@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sketch Pad</title>
+    <link rel="stylesheet" href="recovery.css">
+    <!-- other existing head elements -->
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="sketch-pad.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: 
+                linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
+                linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
+                linear-gradient(-45deg, transparent 75%, #e0e0e0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        #logo {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #logo img {
+            max-width: 200px;
+            height: auto;
+        }
+        #content-wrapper {
+            max-width: 800px;
+            margin: 100px auto 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        canvas { 
+            border: 2px solid black; 
+            background-color: white; 
+        }
+        #toolbar {
+            margin-bottom: 10px;
+        }
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background-image: url('brush-cursor.png');
+            background-size: contain;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <img src="logo.png" alt="Drawing Pad Logo">
+    </div>
+    <div id="content-wrapper">
+        <div id="toolbar">
+            <input type="color" id="strokeColor" value="#000000">
+            <input type="range" id="lineWidth" min="1" max="20" value="5">
+            <select id="shapeSelector">
+                <option value="freehand">Freehand</option>
+                <option value="line">Line</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="circle">Circle</option>
+            </select>
+            <button id="clearButton">Clear Canvas</button>
+            <button id="saveButton" class="btn-loading">
+                <span>Save as PNG</span>
+                <div class="loader"></div>
+            </button>
+        </div>
+        <canvas id="drawingCanvas" width="800" height="500"></canvas>
+    </div>
+
+    <div class="custom-cursor"></div>
+
+    <script src="drawingPad.js"></script>
+    <script src="savePNG.js"></script>
+    <script src="loadingPNG.js"></script>
+    <script src="alert.js"></script>
+    <script src="shape.js"></script>
+<link rel="stylesheet" href="recovery.css">
+<script src="recovery.js"></script>
+    <link rel="stylesheet" href="custom-cursor.css">
+<button id="fullscreen-button">
+    <svg viewBox="0 0 24 24">
+        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+    </svg>
+    <svg viewBox="0 0 24 24">
+        <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
+    </svg>
+</button>
+</body>
+</html>
